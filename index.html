@@ -1,1 +1,86 @@
-Hello World
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Giovanni Outerleys</title>
+</head>
+<body>
+<div class="nav-item nav-projets" onclick="redirection(1)"><span>PROJETS</span></div>
+<div class="nav-item nav-contact" onclick="redirection(2)"><span>CONTACT</span></div>
+<div class="nav-item nav-a-propos" onclick="redirection(3)"><span>HOME</span></div>
+<div class="nav-item nav-tarifs" onclick="redirection(4)"><span>TARIFS</span></div>
+<div class="container" id="container">
+  <div class="title">Gio'</div>
+  <div class="subtitle">Développeur web depuis plus de 6 ans</div>
+</div>
+</body>
+</html>
+
+
+<script>
+
+    function remove(){ // delet all container elements
+        var e = document.getElementById('container');
+        var child = e.lastElementChild;
+        while (child) { 
+            e.removeChild(child); 
+            child = e.lastElementChild; 
+        }
+    }
+
+    function redirection(i){
+        remove();
+        var e = document.getElementById('container');
+       switch(i){
+           case 1: // Projets
+            var box = document.createElement('div');
+            box.setAttribute('class', 'box');
+            box.innerHTML  = 'ProClient';
+            var p = document.createElement('p');
+            p.innerHTML = 'Ancien client Minecraft, avec plus de 200.000 joueurs <br/><a href="https://twitter.com/proclientmc" target="_blank">@ProClientMC</a>';
+            box.appendChild(p);
+            e.appendChild(box);
+            var box = document.createElement('div');
+            box.setAttribute('class', 'box');
+            box.innerHTML  = 'TeamSaumon';
+            var p = document.createElement('p');
+            p.innerHTML = 'Site pour partager ses réalisations <br><a href="https://twitter.com/proclientmc" target="_blank">@ProClientMC</a>';
+            box.appendChild(p);
+            e.appendChild(box);
+           break;
+           case 2:
+            var contact = document.createElement('p');
+            contact.innerHTML = 'giovanniouterleys@gmail.com';
+            e.appendChild(contact);
+           break;
+           case 3: // Home
+           var title = document.createElement('div');
+            title.setAttribute('class', 'title');
+            title.innerHTML = "Gio'";
+            var subtitle = document.createElement('div');
+            subtitle.setAttribute('class', 'subtitle');
+            subtitle.innerHTML = 'Développeur web depuis plus de 6 ans';
+            e.appendChild(title);
+            e.appendChild(subtitle);
+           break;
+           case 4:
+           var box = document.createElement('div');
+            box.setAttribute('class', 'box');
+            box.innerHTML  = 'Site web:';
+            var p = document.createElement('p');
+            p.innerHTML = "Création d'un site web vitrine, avec mise en page (HTML,CSS,JS), base de donnée, gestion nom de domaine. <br> 150€ ";
+            box.appendChild(p);
+            e.appendChild(box);
+            var box = document.createElement('div');
+            box.setAttribute('class', 'box');
+            box.innerHTML  = 'Application mobile:';
+            var p = document.createElement('p');
+            p.innerHTML = "Réalisation d'une application mobile complète pour iOS & Android. <br> Pour ce type de demande me <a onclick='redirection(2)'>contacter</a>";
+            box.appendChild(p);
+            e.appendChild(box);
+           break;
+       }
+    }
+</script>
