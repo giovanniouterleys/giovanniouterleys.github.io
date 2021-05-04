@@ -17,6 +17,8 @@
     window.addEventListener("load", (event) => {
         const ruffle = window.RufflePlayer.newest();
         const player = ruffle.createPlayer();
+        player.style.width = "600px";
+        player.style.height = "600px";
         const container = document.getElementById("container");
         container.appendChild(player);
         player.load("AntBuster.swf");
