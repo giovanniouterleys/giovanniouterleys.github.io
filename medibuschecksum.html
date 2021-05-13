@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>OUTERLEYS Giovanni - MEDIBUS CHECKSUM ONLINE</title>
+</head>
+<body>
+
+
+    <body>
+      
+
+        <div class="jumbotron">
+            <h1 class="display-4">Welcome !</h1>
+            <p class="lead">This page allows you to easily calculate the checksum of your MEDIBUS frames.</p>
+            <hr class="my-4">
+            <p>How to use ? Fill in the beginning of your frame with hexadecimal values such as: 1B and 51. The site will automatically calculate once the two values are filled in.</p>
+
+            <div class="alert alert-danger" role="alert">
+                Attention! When you fill in your values, do not add 0x in front of your values, the site will take care of it.
+              </div>
+            <p class="lead">
+              <p>By OUTERLEYS Giovanni</p>
+            </p>
+          </div>
+
+          <div class="container">
+            <div class="card">
+                <div class="card-header">
+                  Calculator
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="firstvalue">First value (Exemple: 1B) :</label>
+                        <input type="text" class="form-control" id="firstvalue" >
+                      </div>
+                      <div class="form-group">
+                        <label for="secondvalue">Second value (Exemple: 51) :</label>
+                        <input type="text" class="form-control" id="secondvalue">
+                      </div> 
+                      <h1 id="spanResult"><span class="badge badge-secondary">Result :</span></h1>
+                </div>
+              </div>
+          </div>
+
+
+
+    <script>
+
+        function toAscii(value) {
+            if(value>=10){
+                value+=0x07;
+                value+=0x30;
+            }
+            return value;
+        }
+
+        var toHex = function (value) { 
+            var hex = Number(value).toString(16);
+            return hex;
+            };
+
+            $('#firstvalue').on("change keyup paste", function(){
+      findCRC();
+  });
+     $('#secondvalue').on("change keyup paste", function(){
+        findCRC();
+    });
+
+       function findCRC()
+       {
+        var firstvalue = document.getElementById("firstvalue").value;
+        var secondvalue = document.getElementById("secondvalue").value;
+        
+        if(firstvalue.length<2){return;}
+        if(secondvalue.length<2){return;}
+        var frame = [parseInt(firstvalue, 16),parseInt(secondvalue, 16)];
+        var unit, sxteen, checksum=[], sizeOfFrame = frame.length,value = 0;
+
+
+        for(var i=0;i<sizeOfFrame;i++)
+        {
+            value += frame[i];
+        }
+
+        sxteen=(value&0xF0)>>4;
+        unit=value&0x0F;
+        checksum[0]=toAscii(sxteen);
+        checksum[1]=toAscii(unit);
+
+        var finalFrame = firstvalue + " " + secondvalue;
+        
+        
+        var dataChecksum0 = checksum[0].toString();
+        if(dataChecksum0.length<2){
+            console.log(dataChecksum0.charCodeAt(0).toString(16));
+            finalFrame = finalFrame + " " + dataChecksum0.charCodeAt(0).toString(16);
+        } else {
+            finalFrame = finalFrame + " " + toHex(dataChecksum0);
+        }
+
+        var dataChecksum1 = checksum[1].toString();
+        if(dataChecksum1.length<2){
+            finalFrame = finalFrame + " " + dataChecksum1.charCodeAt(0).toString(16);
+        } else {
+            finalFrame = finalFrame + " " + toHex(dataChecksum1);
+        }
+        finalFrame = finalFrame + " " + "0D";
+        document.getElementById("spanResult").innerHTML = '<span class="badge badge-secondary">Result :</span>'+finalFrame;       
+
+       }
+
+        
+    </script>
+
+</body>
+</html>
