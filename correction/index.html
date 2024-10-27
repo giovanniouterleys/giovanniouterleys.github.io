@@ -3,28 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Correction de Texte</title>
-    <script src="https://cdn.tailwindcss.com"></script> <!-- Optionnel : CDN Tailwind CSS -->
-</head>
-<body class="flex items-center justify-center min-h-screen bg-gray-100">
+    <title>Azerty</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Loader Style */
+        .loader {
+            border: 4px solid #f3f3f3; /* Light grey */
+            border-top: 4px solid #3498db; /* Blue */
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 2s linear infinite;
+            display: none; /* Cacher par défaut */
+        }
 
-    <div class="bg-white p-6 rounded-lg shadow-md">
-        <h1 class="text-xl font-bold mb-4">Correction de Texte</h1>
-        <textarea id="inputText" rows="4" class="border p-2 w-full mb-4" placeholder="Saisissez votre texte ici..."></textarea>
-        <button id="submitButton" class="bg-blue-500 text-white p-2 rounded">Corriger le texte</button>
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
+        <h1 class="text-2xl font-bold mb-4">put text</h1>
         
-        <div id="loader" class="hidden mt-4">Chargement...</div>
-        <div id="result" class="mt-4"></div>
+        <div class="mb-4">
+            <label for="password" class="block text-sm font-medium text-gray-700">azerty</label>
+            <input type="password" id="password" class="mt-1 p-2 border border-gray-300 rounded-md w-full" placeholder="Entrez le mot de passe">
+        </div>
+
+        <div class="mb-4">
+            <label for="inputText" class="block text-sm font-medium text-gray-700">azerty</label>
+            <textarea id="inputText" rows="4" class="mt-1 p-2 border border-gray-300 rounded-md w-full" placeholder="azerty"></textarea>
+        </div>
+
+        <button id="azertyButton" class="bg-blue-500 text-white px-4 py-2 rounded-md">Azerty</button>
+        <div class="loader" id="loader"></div>
+
+        <div class="mt-4" id="result"></div>
+        
+        <button id="azertyCButton" class="bg-green-500 text-white px-4 py-2 rounded-md mt-4 hidden">Azerty</button>
     </div>
 
     <script>
-        document.getElementById('submitButton').addEventListener('click', async () => {
-            const text = document.getElementById('inputText').value;
-            const loader = document.getElementById('loader');
-            const result = document.getElementById('result');
+        const azertyButton = document.getElementById('azertyButton');
+        const inputText = document.getElementById('inputText');
+        const loader = document.getElementById('loader');
+        const result = document.getElementById('result');
+        const azertyCButton = document.getElementById('azertyCButton');
+        const passwordInput = document.getElementById('password');
 
-            loader.classList.remove('hidden'); // Affiche le loader
+        azertyButton.addEventListener('click', async () => {
+            const text = inputText.value;
+            const password = passwordInput.value; // Récupère le mot de passe
+
+            loader.style.display = 'block'; // Affiche le loader
             result.innerHTML = ''; // Réinitialise le résultat
+            azertyCButton.classList.add('hidden'); // Cache le bouton de copie
 
             try {
                 const response = await fetch('https://correction-backend.onrender.com/api/correct-text', {
@@ -32,25 +67,36 @@
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ text })
+                    body: JSON.stringify({ text, password }) // Envoie le texte et le mot de passe
                 });
 
                 if (!response.ok) {
-                    throw new Error('Erreur lors de la requête');
+                    throw new Error('Erreur lors de la requête : ' + (await response.json()).error);
                 }
 
                 const data = await response.json();
-                loader.classList.add('hidden'); // Cache le loader
+                loader.style.display = 'none'; // Cache le loader
 
                 // Affiche le texte corrigé et le coût
                 result.innerHTML = `
                     <h2 class="font-bold">Texte corrigé :</h2>
                     <p>${data.correctedText}</p>
                     <h3 class="font-bold">Nombre de tokens utilisés : ${data.usedTokens}</h3>
-                    <h3 class="font-bold">Coût estimé : $${data.estimatedCost}</h3>
+                    <h3 class="font-bold">Coût estimé : $${data.estimatedCost.toFixed(6)}</h3>
                 `;
+                azertyCButton.classList.remove('hidden'); // Affiche le bouton de copie
+                azertyCButton.onclick = () => {
+                    navigator.clipboard.writeText(data.correctedText)
+                        .then(() => {
+                            alert('Texte azerty copié dans le presse-papiers !');
+                        })
+                        .catch(err => {
+                            console.error('Erreur lors de la copie : ', err);
+                        });
+                };
+
             } catch (error) {
-                loader.classList.add('hidden'); // Cache le loader
+                loader.style.display = 'none'; // Cache le loader
                 result.innerHTML = `<p class="text-red-500">Erreur : ${error.message}</p>`;
             }
         });
