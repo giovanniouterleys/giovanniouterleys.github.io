@@ -1,6 +1,6 @@
 Depuis plus de 10 ans, je suis un passionné de technologie. J'aborde durant mon temps libre plusieurs sujets, notamment l'apprentissage de nouveaux langages informatiques.
 
-Depuis quelques années, j'ai commencé à développer des applications mobiles, dans un premier temps en utilisant des technologies comme Java ou Kotlin pour déployer sous Android. Par la suite, je me suis intéressé au développement iOS avec Swift, mais je trouvais que Swift était trop complexe pour un newbie. Je suis donc passé sous React Native qui répondait parfaitement à mes attentes : produire une application Android, mais aussi une application iOS.
+Depuis quelques années, j'ai commencé à développer des applications mobiles, dans un premier temps en utilisant des technologies comme Kotlin ou Java pour déployer sous Android. Par la suite, je me suis intéressé au développement iOS avec Swift, mais je trouvais que Swift était trop complexe pour un newbie. Je suis donc passé sous React Native qui répondait parfaitement à mes attentes : produire une application Android, mais aussi une application iOS.
 
 J'ai commencé l'aventure du développement mobile avec mon projet Logic Party, qui était une application pour organiser ses soirées. L'idée était simple : qui ramène quoi.
 
