@@ -15,12 +15,17 @@ L'un des aspects les plus importants lorsqu'on développe une application iOS es
 Prenons un exemple concret avec les boutons UI :
 
 - **Flutter** : 
+
+
 ![](../assets/images/2025-03-07-Cross-platform-ou-natif-pour-iOS/button_flutter.png)
 - **React Native** :
+
+
 ![](../assets/images/2025-03-07-Cross-platform-ou-natif-pour-iOS/button_react_native.jpg)
 - **SwiftUI** : 
-![](/assets/images/2025-03-07-Cross-platform-ou-natif-pour-iOS/button_swiftui.png)
 
+
+![](../assets/images/2025-03-07-Cross-platform-ou-natif-pour-iOS/button_swiftui.png)
 Comme on peut l'observer sur ces images, les boutons générés par Flutter ou React Native adoptent souvent un design plus proche de celui d'Android, ce qui peut détonner dans un environnement iOS. À l'inverse, SwiftUI respecte nativement les codes graphiques d'Apple et propose une intégration parfaite avec l’interface utilisateur iOS.
 
 Ce détail peut sembler anodin, mais il est crucial. Une application qui n’adopte pas les conventions d’iOS risque de créer une expérience utilisateur incohérente, ce qui peut être un frein à son adoption par les utilisateurs Apple. L’App Store valorise les applications qui respectent les guidelines d’Apple, et une application qui s'éloigne trop de cette philosophie pourrait voir sa visibilité réduite, voire être rejetée.
