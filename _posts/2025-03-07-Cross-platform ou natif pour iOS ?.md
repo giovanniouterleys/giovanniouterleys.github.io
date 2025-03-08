@@ -18,8 +18,9 @@ Prenons un exemple concret avec les boutons UI :
     
 - **React Native** :
 
-![[/assets/images/2025-03-07-Cross-platform-ou-natif-pour-iOS-?/button_react_native.jpg]]
-    
+![React Native Button](/assets/images/2025-03-07-Cross-platform-ou-natif-pour-iOS/button_react_native.jpg)
+
+
 - **SwiftUI** : 
     
 
