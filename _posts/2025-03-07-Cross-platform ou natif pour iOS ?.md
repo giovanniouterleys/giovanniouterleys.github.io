@@ -15,7 +15,7 @@ L'un des aspects les plus importants lorsqu'on développe une application iOS es
 Prenons un exemple concret avec les boutons UI :
 
 - **Flutter** : 
-    
+    ![[apprendreswift/assets/images/2025-03-07-Cross-platform-ou-natif-pour-iOS/button_flutter.png]]
 - **React Native** :
 
 ![React Native Button](/assets/images/2025-03-07-Cross-platform-ou-natif-pour-iOS/button_react_native.jpg)
