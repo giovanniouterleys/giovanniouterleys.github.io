@@ -15,14 +15,12 @@ L'un des aspects les plus importants lorsqu'on développe une application iOS es
 Prenons un exemple concret avec les boutons UI :
 
 - **Flutter** : 
-    ![[apprendreswift/assets/images/2025-03-07-Cross-platform-ou-natif-pour-iOS/button_flutter.png]]
+
+    ![[/assets/images/2025-03-07-Cross-platform-ou-natif-pour-iOS/button_flutter.png]]
 - **React Native** :
-
-![React Native Button](/assets/images/2025-03-07-Cross-platform-ou-natif-pour-iOS/button_react_native.jpg)
-
-
+![[/assets/images/2025-03-07-Cross-platform-ou-natif-pour-iOS/button_react_native.jpg]]
 - **SwiftUI** : 
-    
+    ![[/assets/images/2025-03-07-Cross-platform-ou-natif-pour-iOS/button_swiftui.png]]
 
 Comme on peut l'observer sur ces images, les boutons générés par Flutter ou React Native adoptent souvent un design plus proche de celui d'Android, ce qui peut détonner dans un environnement iOS. À l'inverse, SwiftUI respecte nativement les codes graphiques d'Apple et propose une intégration parfaite avec l’interface utilisateur iOS.
 
