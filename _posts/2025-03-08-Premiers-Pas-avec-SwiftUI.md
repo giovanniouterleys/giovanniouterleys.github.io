@@ -163,3 +163,4 @@ Félicitations ! 🎉 Vous avez appris :
 - **Les bases des vues SwiftUI** (`Text`, `Button`, `Image`).
 - **Les layouts (`VStack`, `HStack`, `ZStack`)**.
 - **Les interactions avec `@State`**.
+^
