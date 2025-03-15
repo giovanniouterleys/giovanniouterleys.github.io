@@ -1,7 +1,6 @@
-
 ---
 title: "La Structure d’une Vue SwiftUI"
-date: 2025-03-15 22:00:00 +0100
+date: 2025-03-08 22:00:00 +0100
 categories: [SwiftUI, Développement iOS]
 tags: [swiftui, vue, structure, développement, ios]
 description: "Découvrez comment sont structurées les vues SwiftUI et apprenez à organiser efficacement votre code."
